@@ -59,14 +59,14 @@
                         {% for product in goods%}
                                                 <!-- Карта товара -->
                         <div class="col-lg-4 col-md-6 p-4">
-                            <div class="card border-primary rounded">
+                            <div class="card border">
                                 {% if product.image %}
                                 <img src="{{product.image.url}}" class="card-img-top" alt="{{product.name}}">
                                 {% else %}
                                 <img src="{% static "deps/images/Not found image.png" %}" class="card-img-top">
                                 {% endif %}
                                 <div class="card-body">
-                                    <a href="../goods/product.html">
+                                    <a href="{% url "catalog:product" product.slug %}">
                                         <p class="card-title">{{product.name}}</p>
                                     </a>
                                     <p class="card-text text-truncate">{{product.description}}</p>
