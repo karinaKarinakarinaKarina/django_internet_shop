@@ -69,7 +69,7 @@
                                     <a href="{% url "catalog:product" product.slug %}">
                                         <p class="card-title">{{product.name}}</p>
                                     </a>
-                                    <p class="card-text text-truncate">{{product.description}}</p>
+                                    <p class="card-text">{{product.description|truncatechars:35}}</p>
                                     <p class="product_id">id: {{product.display_id}}</p>
                                     <div class="d-flex justify-content-between">
                                         {% if product.discount %}
@@ -101,11 +101,11 @@
                                     #
                                     {% endif %}">Назад</a>
                                 </li>
-                                {% for page in goods.paginator.page_range %} 
+                                {% for page in goods.paginator.page_range %}
                                     <li class="page-item {% if goods.number == page %}active{% endif %}">
                                         <a class="page-link" href="{% url "catalog:index" slug_url page %}">{{page}}</a>
                                     </li>
-                                {% endfor %}
+                                {% endfor %} 
                                 <li class="page-item  {% if not goods.has_next %}disabled{% endif %} ">
                                    <a class="page-link" href=" {% if goods.has_next %}
                                     {% url "catalog:index" slug_url goods.next_page_number %}
